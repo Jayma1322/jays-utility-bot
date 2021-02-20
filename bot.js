@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-var blacklistedids = ["287704540810182657", ""]
+var blacklistedids = ["287704540810182657",""]
 
 bot.on('ready', () => {
 	bot.user.setActivity('for ;help!', {
@@ -28,7 +28,7 @@ bot.on('message', msg => {
 
 	if (msg.guild === null) return;
 
-	if blacklistedids.includes(msg.author.id) {
+	if (blacklistedids.includes(msg.author.id)) {
 		msg.channel.send(blacklistedEmbed);
 	} else {
 
