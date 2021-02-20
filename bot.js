@@ -8,6 +8,11 @@ bot.on('ready', () => {
 		type: 'WATCHING'
 	});
 	console.log('bot up and running :D');
+	setInterval(function(){
+		bot.user.setActivity('for ;help in ' + bot.guilds.size + ' servers!', {
+			type: 'WATCHING'
+		});
+}, 30000);
 });
 
 var blacklistedEmbed = new Discord.MessageEmbed()
