@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 var blacklistedids = ["",""]
 
 bot.on('ready', () => {
-	bot.user.setActivity('for ;help!', {
+	bot.user.setActivity('for ;help in ' + bot.guilds.size + ' servers!', {
 		type: 'WATCHING'
 	});
 	console.log('bot up and running :D');
