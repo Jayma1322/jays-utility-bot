@@ -10,7 +10,7 @@ bot.on('ready', () => {
 	console.log('bot up and running :D');
 });
 
-var blacklistedEmbed = new Discord.MessageEmbed();
+var blacklistedEmbed = new Discord.MessageEmbed()
 .setTitle("Error!")
 	.addField("Blacklisted!", "You have been blacklisted by the bot creator!")
 	.setColor("ff0000")
