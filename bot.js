@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-var blacklistedids = ["287704540810182657",""]
+var blacklistedids = ["",""]
 
 bot.on('ready', () => {
 	bot.user.setActivity('for ;help!', {
