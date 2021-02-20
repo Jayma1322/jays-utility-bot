@@ -4,12 +4,12 @@ const bot = new Discord.Client();
 var blacklistedids = ["",""]
 
 bot.on('ready', () => {
-	bot.user.setActivity('for ;help in ' + bot.guilds.size + ' servers!', {
+	bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {
 		type: 'WATCHING'
 	});
 	console.log('bot up and running :D');
 	setInterval(function(){
-		bot.user.setActivity('for ;help in ' + bot.guilds.size + ' servers!', {
+		bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {
 			type: 'WATCHING'
 		});
 }, 30000);
