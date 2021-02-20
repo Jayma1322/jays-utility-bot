@@ -222,4 +222,4 @@ bot.on('message', msg => {
 	};
 });
 
-bot.login("ODA5NDUyMzcwNTUwNDU2Mzg2.YCVTRA.3hEHA6Qt1Y9Sa7ZgKOYYSax8zVU");
+bot.login(process.env.token);
