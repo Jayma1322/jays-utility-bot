@@ -189,7 +189,7 @@ bot.on('message', msg => {
       .setFooter("Made with ❤ by Jayma1322")
     msg.channel.send(responseEmbed);
   }
-  if (cmd == "shutdown") {
+  if (cmd == "restart") {
     if (msg.author.id == "287704540810182657") {
       msg.channel.send('Shutting down...');
       bot.destroy();
