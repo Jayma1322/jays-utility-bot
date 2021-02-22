@@ -22,40 +22,10 @@ var blacklistedEmbed = new Discord.MessageEmbed()
 	.setFooter("Made with ❤ by Jayma1322")
 
 bot.on('message', msg => {
-	var args = msg.content.substring(1).split(" ");
-	var cmd = args[0].toLowerCase();
 	var msgl = msg.content.toLowerCase();
 	if (msgl.includes('daddy') || msgl.includes('dady') || msgl.includes('mommy') || msgl.includes('mummy') || msgl.includes('suck my dick')) {
 		msg.react('😫');
 		console.log('Reacted with to message by ' + msg.author.tag + '. Message contents: ' + msg.content);
-	};
-	if (cmd == "translatetq") {
-		if (!args[1]) {
-			var errorEmbed = new Discord.MessageEmbed()
-				.setTitle("Insufficient Parameters!")
-				.addField(msg.author.tag, "You must include a string to translate!")
-				.setColor("ff0000")
-				.setFooter("Made with ❤ by Jayma1322")
-			msg.channel.send(errorEmbed);
-		} else {
-			msg.channel.startTyping();
-			var arrayts = args.join(" ");
-			var msgtsn = arrayts.replace("translatetq ", "");
-			var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "a").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s")
-			msg.channel.stopTyping(true);
-			msg.channel.send('Translated version: ' + msgts + "\nTranslation may not be correct with intentional numbers.");
-		};
-	};
-	if (cmd == "help") {
-		var helpEmbedDM = new Discord.MessageEmbed()
-			.setTitle("So, you need help with this garbage bot?")
-			.addField("Info", "help - Lists all commands.\nstaff - Lists staff / contributors of the bot.")
-			.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
-			.addField("Useful", ";translatetq <string> - Translates typing quirks for those who cannot read them.")
-			.setColor("00ff00")
-			.setFooter("Made with ❤ by Jayma1322")
-		msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
-		msg.author.send(helpEmbedDM);
 	};
 	if (msg.author.equals(bot.user)) return;
 
@@ -66,6 +36,21 @@ bot.on('message', msg => {
 	if (blacklistedids.includes(msg.author.id)) {
 		msg.channel.send(blacklistedEmbed);
 	} else {
+
+		var args = msg.content.substring(1).split(" ");
+		var cmd = args[0].toLowerCase();
+
+		if (cmd == "help") {
+			var helpEmbedDM = new Discord.MessageEmbed()
+				.setTitle("So, you need help with this garbage bot?")
+				.addField("Info", "help - Lists all commands.\nstaff - Lists staff / contributors of the bot.")
+				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
+				.addField("Useful", ";translatetq <string> - Translates typing quirks for those who cannot read them.")
+				.setColor("00ff00")
+				.setFooter("Made with ❤ by Jayma1322")
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			msg.author.send(helpEmbedDM);
+		};
 		if (cmd == "echo") {
 			if (msg.author.id == "287704540810182657") {
 				var arrayts = args.join(" ");
@@ -202,6 +187,23 @@ bot.on('message', msg => {
 				};
 			};
 		};
+		if (cmd == "translatetq") {
+			if (!args[1]) {
+				var errorEmbed = new Discord.MessageEmbed()
+					.setTitle("Insufficient Parameters!")
+					.addField(msg.author.tag, "You must include a string to translate!")
+					.setColor("ff0000")
+					.setFooter("Made with ❤ by Jayma1322")
+				msg.channel.send(errorEmbed);
+			} else {
+				msg.channel.startTyping();
+				var arrayts = args.join(" ");
+				var msgtsn = arrayts.replace("translatetq ", "");
+				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "a").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s")
+				msg.channel.stopTyping(true);
+				msg.channel.send('Translated version: ' + msgts + "\nTranslation may not be correct with intentional numbers.");
+			};
+		}
 		if (cmd == "staff") {
 			var responseEmbed = new Discord.MessageEmbed()
 				.setTitle("Bot Staff")
