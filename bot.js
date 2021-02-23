@@ -19,7 +19,7 @@ var blacklistedEmbed = new Discord.MessageEmbed()
 .setTitle("Error!")
 	.addField("Blacklisted!", "You have been blacklisted by the bot creator!")
 	.setColor("ff0000")
-	.setFooter("Made with ❤ by Jayma1322")
+	.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 
 bot.on('message', msg => {
 	var msgl = msg.content.toLowerCase();
@@ -47,7 +47,7 @@ bot.on('message', msg => {
 				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", ";translatetq <string> - Translates typing quirks for those who cannot read them.")
 				.setColor("00ff00")
-				.setFooter("Made with ❤ by Jayma1322")
+				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send(helpEmbedDM);
 		};
@@ -67,7 +67,7 @@ bot.on('message', msg => {
 					.setTitle("Insufficient Parameters!")
 					.addField(msg.author.tag, "You must include how many messages to delete! (limit 100)")
 					.setColor("ff0000")
-					.setFooter("Made with ❤ by Jayma1322")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				msg.channel.send(errorEmbed);
 			} else {
 				if (!msg.member.permissions.toArray().includes("MANAGE_MESSAGES")) {
@@ -75,7 +75,7 @@ bot.on('message', msg => {
 						.setTitle("Insufficient Permissions!")
 						.addField(msg.author.tag, "You must have MANAGE_MESSAGES to use this command!")
 						.setColor("ff0000")
-						.setFooter("Made with ❤ by Jayma1322")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 					msg.channel.send(errorEmbed);
 				} else {
 					msg.delete();
@@ -84,7 +84,7 @@ bot.on('message', msg => {
 						.setTitle("Messages Purged!")
 						.addField(msg.author.tag, "Successfully purged " + args[1] + " messages!")
 						.setColor("00ff00")
-						.setFooter("Made with ❤ by Jayma1322")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 					msg.channel.send(completedEmbed);
 				};
 			};
@@ -95,7 +95,7 @@ bot.on('message', msg => {
 					.setTitle("Insufficient Permissions!")
 					.addField(msg.author.tag, "You must have KICK_MEMBERS to use this command!")
 					.setColor("ff0000")
-					.setFooter("Made with ❤ by Jayma1322")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				msg.channel.send(errorEmbed);
 			} else {
 				if (!args[2]) {
@@ -103,7 +103,7 @@ bot.on('message', msg => {
 						.setTitle("Insufficient Parameters!")
 						.addField(msg.author.tag, "You must tag 1 user, and add a reason! (reason can be however long)")
 						.setColor("ff0000")
-						.setFooter("Made with ❤ by Jayma1322")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 					msg.channel.send(errorEmbed);
 				} else {
 					var user = msg.mentions.members.first()
@@ -112,7 +112,7 @@ bot.on('message', msg => {
 							.setTitle("Insufficient Parameters!")
 							.addField(msg.author.tag, "You must tag 1 user, and add a reason! (reason can be however long)\nThis may have also been an error, if you are sure you tagged the user correctly, retry.")
 							.setColor("ff0000")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						msg.channel.send(errorEmbed);
 					} else {
 						var serverName = msg.guild.name
@@ -122,7 +122,7 @@ bot.on('message', msg => {
 							.setTitle(serverName)
 							.addField("Kicked!", "You have been kicked from " + serverName + " by " + admin + " for " + kickreason)
 							.setColor("ff0000")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						user.user.send(kickedEmbed)
 							.catch(() => msg.channel.send('Failed to DM user kicked message.'));
 						user.kick(kickreason);
@@ -130,7 +130,7 @@ bot.on('message', msg => {
 							.setTitle("User Kicked!")
 							.addField(msg.author.tag, "Successfully kicked " + user.user.tag)
 							.setColor("00ff00")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						msg.channel.send(completedEmbed);
 					};
 				};
@@ -142,7 +142,7 @@ bot.on('message', msg => {
 					.setTitle("Insufficient Permissions!")
 					.addField(msg.author.tag, "You must have BAN_MEMBERS to use this command!")
 					.setColor("ff0000")
-					.setFooter("Made with ❤ by Jayma1322")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				msg.channel.send(errorEmbed);
 			} else {
 				if (!args[2]) {
@@ -150,7 +150,7 @@ bot.on('message', msg => {
 						.setTitle("Insufficient Parameters!")
 						.addField(msg.author.tag, "You must tag 1 user, and add a reason! (reason can be however long)")
 						.setColor("ff0000")
-						.setFooter("Made with ❤ by Jayma1322")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 					msg.channel.send(errorEmbed);
 				} else {
 					var user = msg.mentions.members.first()
@@ -159,7 +159,7 @@ bot.on('message', msg => {
 							.setTitle("Insufficient Parameters!")
 							.addField(msg.author.tag, "You must tag 1 user, and add a reason! (reason can be however long)\nThis may have also been an error, if you are sure you tagged the user correctly, retry.")
 							.setColor("ff0000")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						msg.channel.send(errorEmbed);
 					} else {
 						var serverName = msg.guild.name
@@ -169,7 +169,7 @@ bot.on('message', msg => {
 							.setTitle(serverName)
 							.addField("Banned!", "You have been banned from " + serverName + " by " + admin + " for " + banreason)
 							.setColor("ff0000")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						user.user.send(bannedEmbed);
 						setTimeout(function() {
 							user.ban({
@@ -181,7 +181,7 @@ bot.on('message', msg => {
 							.setTitle("User Banned!")
 							.addField(msg.author.tag, "Successfully banned " + user.user.tag)
 							.setColor("00ff00")
-							.setFooter("Made with ❤ by Jayma1322")
+							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						msg.channel.send(completedEmbed);
 					};
 				};
@@ -193,7 +193,7 @@ bot.on('message', msg => {
 					.setTitle("Insufficient Parameters!")
 					.addField(msg.author.tag, "You must include a string to translate!")
 					.setColor("ff0000")
-					.setFooter("Made with ❤ by Jayma1322")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				msg.channel.send(errorEmbed);
 			} else {
 				msg.channel.startTyping();
@@ -210,7 +210,7 @@ bot.on('message', msg => {
 				.addField("Owner", "juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				.addField("TranslationTQ Contributors", "ellie#0212\nbig_manc#6597")
 				.setColor("00ff00")
-				.setFooter("Made with ❤ by Jayma1322")
+				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send(responseEmbed);
 		}
 		if (cmd == "restart") {
