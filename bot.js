@@ -125,7 +125,9 @@ bot.on('message', msg => {
 							.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 						user.user.send(kickedEmbed)
 							.catch(() => msg.channel.send('Failed to DM user kicked message.'));
-						user.kick(kickreason);
+						setTimeout(function() {
+							user.kick(kickreason);
+						}, 3000);
 						var completedEmbed = new Discord.MessageEmbed()
 							.setTitle("User Kicked!")
 							.addField(msg.author.tag, "Successfully kicked " + user.user.tag)
