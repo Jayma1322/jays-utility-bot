@@ -79,7 +79,9 @@ bot.on('message', msg => {
 					msg.channel.send(errorEmbed);
 				} else {
 					msg.delete();
-					msg.channel.bulkDelete(args[1]);
+					setTimeout(function() {
+						msg.channel.bulkDelete(args[1]);
+					}, 3000);
 					var completedEmbed = new Discord.MessageEmbed()
 						.setTitle("Messages Purged!")
 						.addField(msg.author.tag, "Successfully purged " + args[1] + " messages!")
