@@ -44,9 +44,9 @@ bot.on('message', msg => {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot?")
 				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nstaff - Lists staff / contributors of the bot.")
+				.addField("Fun Commands", "8ball - Answers any question in the world!!!! (with a few exceptions)")
 				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", ";translatetq <string> - Translates typing quirks for those who cannot read them.")
-				.addField("Fun Commands", "8ball - Answers any question in the world!!!! (with a few exceptions)")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
