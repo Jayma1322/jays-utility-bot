@@ -95,6 +95,46 @@ bot.on('message', msg => {
 				};
 			};
 		};
+		if (cmd == "8ball") {
+			if (args[1].toLowerCase().includes("die") || args[1].toLowerCase().includes("suicide")) {
+				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
+			} else {
+				let num = Math.floor(Math.random() * 10);
+				switch(num) {
+					case 0:
+						msg.channel.send('I\'m not answering that you idiot')
+						break;
+					case 1:
+						msg.channel.send('Yeah, why not')
+						break;
+					case 2:
+						msg.channel.send('Without a doubt')
+						break;
+					case 3:
+						msg.channel.send('Pee your pants right now :gun:')
+						break;
+					case 4:
+						msg.channel.send('Okay')
+						break;
+					case 5:
+						msg.channel.send('Could you possibly ask a stupider question?')
+						break;
+					case 6:
+						msg.channel.send('No.')
+						break;
+					case 7:
+						msg.channel.send('Definitely not')
+						break;
+					case 8:
+						msg.channel.send('You\'re a moron')
+						break;
+					case 9:
+						msg.channel.send('I don\'t know...')
+					case 10:
+						msg.channel.send('Ask me later I\'m sleeping')
+				}
+			}
+		}
 		if (cmd == "kick") {
 			if (!msg.member.permissions.toArray().includes("KICK_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
