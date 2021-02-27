@@ -43,13 +43,17 @@ bot.on('message', msg => {
 		if (cmd == "help") {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot?")
-				.addField("Info", "help - Lists all commands.\nstaff - Lists staff / contributors of the bot.")
+				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nstaff - Lists staff / contributors of the bot.")
 				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", ";translatetq <string> - Translates typing quirks for those who cannot read them.")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send(helpEmbedDM);
+		};
+		if (cmd == "invite") {
+			msg.author.send("Thanks for being interested in the bot!\nYou can invite the bot with the link below!\nhttps://discord.com/oauth2/authorize?client_id=809452370550456386&scope=bot&permissions=24210502")
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 		};
 		if (cmd == "echo") {
 			if (msg.author.id == "287704540810182657") {
