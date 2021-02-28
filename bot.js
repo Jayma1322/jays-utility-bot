@@ -84,15 +84,15 @@ bot.on('message', msg => {
 					msg.channel.send(errorEmbed);
 				} else {
 					msg.delete();
-					setTimeout(function() {
-						msg.channel.bulkDelete(args[1]);
-					}, 3000);
 					var completedEmbed = new Discord.MessageEmbed()
 						.setTitle("Messages Purged!")
 						.addField(msg.author.tag, "Successfully purged " + args[1] + " messages!")
 						.setColor("00ff00")
 						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
-					msg.channel.send(completedEmbed);
+					setTimeout(function() {
+						msg.channel.bulkDelete(args[1]);
+						msg.channel.send(completedEmbed);
+					}, 500);
 				};
 			};
 		};
