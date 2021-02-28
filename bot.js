@@ -97,10 +97,11 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "8ball") {
-			if (args[1].toLowerCase().includes("die") || args[1].toLowerCase().includes("suicide")) {
+			var text = args.slice(2).join(" ");
+			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide")) {
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
 			} else {
-				let num = Math.floor(Math.random() * 10);
+				let num = Math.floor(Math.random() * 11);
 				switch(num) {
 					case 0:
 						msg.channel.send('I\'m not answering that you idiot')
@@ -131,11 +132,13 @@ bot.on('message', msg => {
 						break;
 					case 9:
 						msg.channel.send('I don\'t know...')
+						break;
 					case 10:
 						msg.channel.send('Ask me later I\'m sleeping')
+						break;
 				}
 			}
-		}
+		};
 		if (cmd == "kick") {
 			if (!msg.member.permissions.toArray().includes("KICK_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -173,7 +176,7 @@ bot.on('message', msg => {
 						user.user.send(kickedEmbed)
 							.catch(() => msg.channel.send('Failed to DM user kicked message.'));
 						setTimeout(function() {
-							user.kick(kickreason);
+							user.kick("Kicked by" + admin + "|" + kickreason);
 						}, 3000);
 						var completedEmbed = new Discord.MessageEmbed()
 							.setTitle("User Kicked!")
@@ -223,7 +226,7 @@ bot.on('message', msg => {
 						setTimeout(function() {
 							user.ban({
 								days: 7,
-								reason: banreason
+								reason: "Banned by" + admin + "|" + banreason
 							})
 						}, 3000);
 						var completedEmbed = new Discord.MessageEmbed()
