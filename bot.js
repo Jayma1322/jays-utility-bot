@@ -23,10 +23,6 @@ var blacklistedEmbed = new Discord.MessageEmbed()
 
 bot.on('message', msg => {
 	var msgl = msg.content.toLowerCase();
-	if (msgl.includes('daddy') || msgl.includes('dady') || msgl.includes('mommy') || msgl.includes('mummy') || msgl.includes('suck my dick')) {
-		msg.react('😫');
-		console.log('Reacted with to message by ' + msg.author.tag + '. Message contents: ' + msg.content);
-	};
 	if (msg.author.equals(bot.user)) return;
 
 	if (!msg.content.startsWith(";")) return;
@@ -98,7 +94,7 @@ bot.on('message', msg => {
 		};
 		if (cmd == "8ball") {
 			var text = args.slice(2).join(" ");
-			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide")) || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")){
+			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide") || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")){
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
 			} else {
 				let num = Math.floor(Math.random() * 11);
