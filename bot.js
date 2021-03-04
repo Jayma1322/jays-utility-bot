@@ -98,7 +98,7 @@ bot.on('message', msg => {
 		};
 		if (cmd == "8ball") {
 			var text = args.slice(2).join(" ");
-			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide")) {
+			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide")) || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")){
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
 			} else {
 				let num = Math.floor(Math.random() * 11);
