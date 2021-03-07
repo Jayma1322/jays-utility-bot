@@ -97,7 +97,7 @@ bot.on('message', msg => {
 			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide") || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")){
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
 			} else {
-				let num = Math.floor(Math.random() * 11);
+				let num = Math.floor(Math.random() * 13);
 				switch(num) {
 					case 0:
 						msg.channel.send('I\'m not answering that you idiot')
@@ -131,6 +131,12 @@ bot.on('message', msg => {
 						break;
 					case 10:
 						msg.channel.send('Ask me later I\'m sleeping')
+						break;
+					case 11:
+						msg.channel.send('Your question is so stupid I do not want to answer it')
+						break;
+					case 12:
+						msg.channel.send('Of course!')
 						break;
 				}
 			}
