@@ -178,7 +178,7 @@ bot.on('message', msg => {
 						user.user.send(kickedEmbed)
 							.catch(() => msg.channel.send('Failed to DM user kicked message.'));
 						setTimeout(function() {
-							user.kick("Kicked by" + admin + "|" + kickreason);
+							user.kick("Kicked by" + admin + " | " + kickreason);
 						}, 3000);
 						var completedEmbed = new Discord.MessageEmbed()
 							.setTitle("User Kicked!")
@@ -228,7 +228,7 @@ bot.on('message', msg => {
 						setTimeout(function() {
 							user.ban({
 								days: 7,
-								reason: "Banned by" + admin + "|" + banreason
+								reason: "Banned by" + admin + " | " + banreason
 							})
 						}, 3000);
 						var completedEmbed = new Discord.MessageEmbed()
