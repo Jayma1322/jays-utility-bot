@@ -266,7 +266,25 @@ bot.on('message', msg => {
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send(responseEmbed);
-		}
+		};
+		if (cmd == "eval") {
+			if(msg.author.id == "287704540810182657") {
+				try {
+					const code = args.join(" ");
+					let evaled = eval(code);
+
+					if(typeof evaled !== "string") {
+						evaled = require("util").inspect(evaled);
+					}
+
+					msg.channel.send(evaled, {code:"x1"})
+				} catch(err) {
+					msg.channel.send('you messed it up, idiot\n' + err)
+				}
+			} else {
+				msg.channel.send('nice try idiot')
+			}
+		};
 		if (cmd == "restart") {
 			if (msg.author.id == "287704540810182657") {
 				msg.channel.send('Restarting...');
