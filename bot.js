@@ -319,5 +319,4 @@ bot.on('message', msg => {
 	};
 });
 
-//bot.login(process.env.token);
-bot.login("ODA5NDUyMzcwNTUwNDU2Mzg2.YCVTRA.OZluLCJuXifg8XbwycxJAk6wSp8");
+bot.login(process.env.token);
