@@ -1,3 +1,4 @@
+const { notDeepEqual } = require('assert');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
@@ -29,6 +30,10 @@ var maintenanceEmbed = new Discord.MessageEmbed()
 	.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 
 bot.on('message', msg => {
+	if(msg.content == ";maintenance" && msg.author.id == "287704540810182657") {
+		maintenance = !maintenance
+		msg.channel.send('Maintenance is now: ' + toString(maintenance))
+	};
 	if(maintenance) {
 		msg.channel.send(maintenanceEmbed)
 	} else {
@@ -302,7 +307,7 @@ bot.on('message', msg => {
 				};
 			};
 			if (cmd == "setstatus") {
-				if(msg.author.id == "") {
+				if(msg.author.id == "287704540810182657") {
 					if(args[1] == "default") {	
 						status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
 						msg.channel.send('Set status to default message.\nThe bot may take 30 seconds to update status')
