@@ -1,6 +1,3 @@
-const {
-	notDeepEqual
-} = require('assert');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
@@ -101,7 +98,7 @@ bot.on('message', msg => {
 			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide") || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")) {
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
 			} else {
-				let num = Math.floor(Math.random() * 13);
+				let num = Math.floor(Math.random() * 14);
 				switch (num) {
 					case 0:
 						msg.channel.send('I\'m not answering that you idiot')
@@ -141,6 +138,9 @@ bot.on('message', msg => {
 						break;
 					case 12:
 						msg.channel.send('Of course!')
+						break;
+					case 13:
+						msg.channel.send('you\'re ugly no offense')
 						break;
 				}
 			}
