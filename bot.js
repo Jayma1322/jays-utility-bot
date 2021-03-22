@@ -37,22 +37,18 @@ bot.on('message', msg => {
 		if (cmd == "help" || cmd == "info") {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot? Prefix is ;")
-				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nstaff - Lists staff / contributors of the bot.")
+				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
 				.addField("Fun Commands", "8ball - Answers any question in the world!!!! (with a few exceptions)")
 				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", "translatetq <string> - Translates typing quirks for those who cannot read them.")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
-			if (!msg.guild === null) {
-				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
-			};
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send(helpEmbedDM);
 		};
 		if (cmd == "invite") {
 			msg.author.send("Thanks for being interested in the bot!\nYou can invite the bot with the link below!\nhttps://discord.com/oauth2/authorize?client_id=809452370550456386&scope=bot&permissions=24210502")
-			if (!msg.guild === null) {
-				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
-			};
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 		};
 		if (cmd == "ping") {
 			var datenow = Date.now();
@@ -66,9 +62,7 @@ bot.on('message', msg => {
 				});
 		};
 		if (cmd == "server" || cmd == "support") {
-			if (!msg.guild === null) {
-				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
-			}
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send("The support server is https://discord.gg/adha4a9yhE")
 		};
 
