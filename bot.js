@@ -43,12 +43,16 @@ bot.on('message', msg => {
 				.addField("Useful", "translatetq <string> - Translates typing quirks for those who cannot read them.")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
-			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			if (!msg.guild === null) {
+				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			};
 			msg.author.send(helpEmbedDM);
 		};
 		if (cmd == "invite") {
 			msg.author.send("Thanks for being interested in the bot!\nYou can invite the bot with the link below!\nhttps://discord.com/oauth2/authorize?client_id=809452370550456386&scope=bot&permissions=24210502")
-			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			if (!msg.guild === null) {
+				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			};
 		};
 		if (cmd == "ping") {
 			var datenow = Date.now();
@@ -60,6 +64,12 @@ bot.on('message', msg => {
 					msg.channel.send(pingEmbed);
 					msg.delete();
 				});
+		};
+		if (cmd == "server" || cmd == "support") {
+			if (!msg.guild === null) {
+				msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			}
+			msg.author.send("The support server is https://discord.gg/adha4a9yhE")
 		};
 
 		if (msg.guild === null) return;
