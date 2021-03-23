@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const fetch = require('fetch');
 const bot = new Discord.Client();
 
 var status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
