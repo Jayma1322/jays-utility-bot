@@ -37,7 +37,7 @@ bot.on('message', msg => {
 		if (cmd == "help" || cmd == "info") {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot? Prefix is ;")
-				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
+				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nuptime - Shows bot uptime in minutes.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
 				.addField("Fun Commands", "8ball - Answers any question in the world!!!! (with a few exceptions)")
 				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", "translatetq <string> - Translates typing quirks for those who cannot read them.")
@@ -325,6 +325,9 @@ bot.on('message', msg => {
 			} else {
 				msg.channel.send('nice try idiot')
 			};
+		};
+		if (cmd == "uptime") {
+			msg.channel.send('Bot uptime is currently ' + math.floor(bot.uptime / 60000) + ' minutes.')
 		};
 	};
 });
