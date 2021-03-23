@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 var status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
-var maintenance = false
 
 var blacklistedids = ["", ""]
 
@@ -327,7 +326,7 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "uptime") {
-			msg.channel.send('Bot uptime is currently ' + math.floor(bot.uptime / 60000) + ' minutes.')
+			msg.channel.send('Bot uptime is currently ' + Math.floor(bot.uptime / 60000) + ' minutes.')
 		};
 	};
 });
