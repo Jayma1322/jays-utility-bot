@@ -4,8 +4,7 @@ const bot = new Discord.Client();
 
 var status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
 
-var blacklistedids = require('./resources/blacklists.json')
-
+var blacklistedids = [0,1]
 bot.on('ready', () => {
 	bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {
 		type: 'WATCHING'
@@ -13,7 +12,6 @@ bot.on('ready', () => {
 	console.log('bot up and running :D');
 	setInterval(function() {
 		eval(status)
-		blacklistedids = fetch("https://raw.githubusercontent.com/Jayma1322/jays-utility-bot/main/resources/blacklists.json")
 	}, 30000);
 });
 
