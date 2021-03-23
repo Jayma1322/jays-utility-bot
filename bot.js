@@ -37,8 +37,8 @@ bot.on('message', msg => {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot? Prefix is ;")
 				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nuptime - Shows bot uptime in minutes.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
-				.addField("Fun Commands", "8ball - Answers any question in the world!!!! (with a few exceptions)")
-				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
+				.addField("Fun Commands", "8ball <question> - Answers any question in the world!!!! (with a few exceptions)")
+				.addField("Moderation", "purge <amount> - Deletes the amount of messages you specify\nmute <mention> - Prevents user from speaking in channels.\nunmute <mention> - Allows user to speak in channels after muted.\nkick <mention> <reason> - Kicks the user you tag with the specified reason.\nban <mention> <reason> - Bans the user you tag with the specified reason.")
 				.addField("Useful", "translatetq <string> - Translates typing quirks for those who cannot read them.")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
@@ -55,7 +55,7 @@ bot.on('message', msg => {
 				.then(msg => {
 					var pingEmbed = new Discord.MessageEmbed()
 						.setTitle("Ping!")
-						.addField('Here are the numbers!',"Bot Latency: " + Math.floor(Date.now() - datenow) + "ms.\nAPI Latency: " + bot.ws.ping + "ms.")
+						.addField('Here are the numbers!', "Bot Latency: " + Math.floor(Date.now() - datenow) + "ms.\nAPI Latency: " + bot.ws.ping + "ms.")
 					msg.channel.send(pingEmbed);
 					msg.delete();
 				});
@@ -259,6 +259,88 @@ bot.on('message', msg => {
 				};
 			};
 		};
+		if (cmd == "mute") {
+			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
+			if (!role) {
+				var errorEmbed = new Discord.MessageEmbed()
+					.setTitle("Command Error!")
+					.addField(msg.author.tag, "Could not find role with name \"Muted\"\nPlease create a role if there is not one, or name your muted role \"Muted\"")
+					.setColor("ff0000")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+				msg.channel.send(errorEmbed);
+			} else {
+				if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+					var errorEmbed = new Discord.MessageEmbed()
+						.setTitle("Insufficient Permissions!")
+						.addField(msg.author.tag, "You must have MANAGE_MESSAGES to use this command!")
+						.setColor("ff0000")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+					msg.channel.send(errorEmbed);
+				} else {
+					var usertomute = msg.mentions.users.first()
+					msg.guild.members.fetch(usertomute.id)
+						.then(member => {
+							if (!member || member.hasPermission("ADMINISTRATOR")) {
+								var errorEmbed = new Discord.MessageEmbed()
+									.setTitle("Insufficient Permissions!")
+									.addField(msg.author.tag, "The user you tried to mute has ADMINISTRATOR permissions or could not find user!")
+									.setColor("ff0000")
+									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+								msg.channel.send(errorEmbed);
+							} else {
+								member.roles.add(role, "Muted by " + msg.author.tag)
+								var completedEmbed = new Discord.MessageEmbed()
+									.setTitle("Muted User!")
+									.addField(msg.author.tag, "Successfully muted " + member.tag)
+									.setColor("00ff00")
+									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+								msg.channel.send(completedEmbed);
+							};
+						});
+				};
+			};
+		};
+		if (cmd == "unmute") {
+			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
+			if (!role) {
+				var errorEmbed = new Discord.MessageEmbed()
+					.setTitle("Command Error!")
+					.addField(msg.author.tag, "Could not find role with name \"Muted\"\nPlease create a role if there is not one, or name your muted role \"Muted\"")
+					.setColor("ff0000")
+					.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+				msg.channel.send(errorEmbed);
+			} else {
+				if (!msg.member.hasPermission("MANAGE_MESSAGES")) {
+					var errorEmbed = new Discord.MessageEmbed()
+						.setTitle("Insufficient Permissions!")
+						.addField(msg.author.tag, "You must have MANAGE_MESSAGES to use this command!")
+						.setColor("ff0000")
+						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+					msg.channel.send(errorEmbed);
+				} else {
+					var usertomute = msg.mentions.users.first()
+					msg.guild.members.fetch(usertomute.id)
+						.then(member => {
+							if (!member) {
+								var errorEmbed = new Discord.MessageEmbed()
+									.setTitle("Insufficient Perameters!")
+									.addField(msg.author.tag, "The user you tried to unmute could not be found!")
+									.setColor("ff0000")
+									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+								msg.channel.send(errorEmbed);
+							} else {
+								member.roles.remove(role, "Unmuted by " + msg.author.tag)
+								var completedEmbed = new Discord.MessageEmbed()
+									.setTitle("Unmuted User!")
+									.addField(msg.author.tag, "Successfully unmuted " + member.tag)
+									.setColor("00ff00")
+									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+								msg.channel.send(completedEmbed);
+							};
+						});
+				};
+			};
+		};
 		if (cmd == "translatetq") {
 			if (!args[1]) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -305,9 +387,9 @@ bot.on('message', msg => {
 				msg.channel.send('nice try idiot')
 			}
 		};
-		if (cmd == "restart") {
+		if (cmd == "shutdown") {
 			if (msg.author.id == "287704540810182657") {
-				msg.channel.send('Restarting...');
+				msg.channel.send('Shutting down...');
 				bot.destroy();
 			};
 		};
