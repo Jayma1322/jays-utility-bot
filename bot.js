@@ -291,7 +291,7 @@ bot.on('message', msg => {
 								member.roles.add(role, "Muted by " + msg.author.tag)
 								var completedEmbed = new Discord.MessageEmbed()
 									.setTitle("Muted User!")
-									.addField(msg.author.tag, "Successfully muted " + member.tag)
+									.addField(msg.author.tag, "Successfully muted " + usertomute.tag)
 									.setColor("00ff00")
 									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 								msg.channel.send(completedEmbed);
@@ -332,7 +332,7 @@ bot.on('message', msg => {
 								member.roles.remove(role, "Unmuted by " + msg.author.tag)
 								var completedEmbed = new Discord.MessageEmbed()
 									.setTitle("Unmuted User!")
-									.addField(msg.author.tag, "Successfully unmuted " + member.tag)
+									.addField(msg.author.tag, "Successfully unmuted " + usertomute.tag)
 									.setColor("00ff00")
 									.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 								msg.channel.send(completedEmbed);
