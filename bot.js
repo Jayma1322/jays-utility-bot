@@ -65,8 +65,6 @@ bot.on('message', msg => {
 			msg.author.send("The support server is https://discord.gg/adha4a9yhE")
 		};
 
-		if (msg.guild === null) return;
-
 		if (cmd == "echo") {
 			if (msg.author.id == "287704540810182657") {
 				var arrayts = args.join(" ");
@@ -78,6 +76,7 @@ bot.on('message', msg => {
 			}
 		};
 		if (cmd == "purge") {
+			if (msg.guild === null) return;
 			if (!args[1] || args[1] > 100) {
 				var errorEmbed = new Discord.MessageEmbed()
 					.setTitle("Insufficient Parameters!")
@@ -160,6 +159,7 @@ bot.on('message', msg => {
 			}
 		};
 		if (cmd == "kick") {
+			if (msg.guild === null) return;
 			if (!msg.member.permissions.toArray().includes("KICK_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
 					.setTitle("Insufficient Permissions!")
@@ -209,6 +209,7 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "ban") {
+			if (msg.guild === null) return;
 			if (!msg.member.permissions.toArray().includes("BAN_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
 					.setTitle("Insufficient Permissions!")
@@ -260,6 +261,7 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "mute") {
+			if (msg.guild === null) return;
 			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
 			if (!role) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -301,6 +303,7 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "unmute") {
+			if (msg.guild === null) return;
 			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
 			if (!role) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -408,7 +411,13 @@ bot.on('message', msg => {
 			};
 		};
 		if (cmd == "uptime") {
-			msg.channel.send('Bot uptime is currently ' + Math.floor(bot.uptime / 60000) + ' minutes.')
+			var uptime = Math.floor(bot.uptime / 60000)
+			if (uptime > 60) {
+				uptime = uptime / 60 + " hours"
+			} else {
+				uptime = uptime + " minutes"
+			};
+			msg.channel.send('Current bot uptime is ' + uptime)
 		};
 	};
 });
