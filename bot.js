@@ -412,7 +412,7 @@ bot.on('message', msg => {
 		if (cmd == "uptime") {
 			var uptime = Math.floor(bot.uptime / 60000)
 			if (uptime > 60) {
-				uptime = Math.floor(uptime) / 60 + " hours"
+				uptime = Math.floor(uptime / 60) + " hours"
 			} else {
 				uptime = Math.floor(uptime) + " minutes"
 			};
