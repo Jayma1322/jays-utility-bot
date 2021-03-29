@@ -420,7 +420,7 @@ bot.on('message', msg => {
 		};
 		if (cmd == "listservers" && msg.author.id == "287704540810182657") {
 			var string = ""
-			for (const server in bot.guilds.toArray()) {
+			for (const server in bot.guilds.cache) {
 				string = string + server + "\n"
 			}
 			msg.author.send(string)
