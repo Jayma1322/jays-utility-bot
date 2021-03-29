@@ -420,9 +420,9 @@ bot.on('message', msg => {
 		};
 		if (cmd == "listservers" && msg.author.id == "287704540810182657") {
 			var string = ""
-			for (const server in bot.guilds.cache) {
+			bot.guilds.cache.forEach(server => {
 				string = string + server.name + "\n"
-			}
+			});
 			msg.author.send(string)
 		};
 	};
