@@ -20,6 +20,15 @@ var blacklistedEmbed = new Discord.MessageEmbed()
 	.setColor("ff0000")
 	.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 
+bot.on('guildCreate', guild => {
+	var joinedEmbed = new Discord.MessageEmbed()
+		.setTitle("Hi!")
+		.addField('Info','As of right now there is no configuration but that will happen sooner or later!\nThank you for using Jay\'s Utility Bot! I appreciate it.')
+		.addField('Get Started','To begin your *very intense* experience, type ;help or ;info!')
+		.setColor("00ff00")
+		.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+});
+
 bot.on('message', msg => {
 	if (msg.author.equals(bot.user)) return;
 
@@ -31,8 +40,17 @@ bot.on('message', msg => {
 		var args = msg.content.substring(1).split(" ");
 		var cmd = args[0].toLowerCase();
 
-
-		if (cmd == "help" || cmd == "info") {
+		if (cmd == "info") {
+			var infoEmbed = new Discord.MessageEmbed()
+				.setTitle("Info")
+				.addField("Getting Started","To get started with Jay's Utility Bot, type ;help!")
+				.addField("Moderation Features","Moderation commands are locked to role / user permissions, and you can only do things that you can do manually via right click or other options.")
+				.addField("Bot Staff and Contributors","Main Bot Developer and Owner - <@287704540810182657>\nTranslateTQ Contributors:\n<@808094012741386281>\n<@651856567422943259>")
+				.setColor("FFFFFF")
+				.setFooter("Thank you for using Jay's Utility Bot! Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+			msg.channel.send(infoEmbed)
+		};
+		if (cmd == "help") {
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot? Prefix is ;")
 				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nuptime - Shows bot uptime in minutes.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
