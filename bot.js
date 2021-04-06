@@ -40,17 +40,19 @@ bot.on('message', msg => {
 		var args = msg.content.substring(1).split(" ");
 		var cmd = args[0].toLowerCase();
 
-		if (cmd == "info") {
+		switch(cmd) {
+
+		case "info":
 			var infoEmbed = new Discord.MessageEmbed()
 				.setTitle("Info")
 				.addField("Getting Started","To get started with Jay's Utility Bot, type ;help!")
 				.addField("Moderation Features","Moderation commands are locked to role / user permissions, and you can only do things that you can do manually via right click or other options.")
-				.addField("Bot Staff and Contributors","Main Bot Developer and Owner - <@287704540810182657>\nTranslateTQ Contributors:\n<@808094012741386281>\n<@651856567422943259>")
+				.addField("Bot Staff and Contributors","Main Bot Developer and Owner - <@287704540810182657>\nTranslateTQ Contributors:\n<@808094012741386281>\n<@651856567422943259>\n<@536963028810334232>")
 				.setColor("FFFFFF")
 				.setFooter("Thank you for using Jay's Utility Bot! Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send(infoEmbed)
-		};
-		if (cmd == "help") {
+			break;
+		case "help":
 			var helpEmbedDM = new Discord.MessageEmbed()
 				.setTitle("So, you need help with this garbage bot? Prefix is ;")
 				.addField("Info", "help - Lists all commands.\ninvite - Sends bot invite to your DMs, so you can add it to your own server.\nping - Gets bot latency, and API latency.\nuptime - Shows bot uptime in minutes.\nsupport - Sends invite to the bot's support server\nstaff - Lists staff / contributors of the bot.")
@@ -61,12 +63,12 @@ bot.on('message', msg => {
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send(helpEmbedDM);
-		};
-		if (cmd == "invite") {
+			break;
+		case "invite":
 			msg.author.send("Thanks for being interested in the bot!\nYou can invite the bot with the link below!\nhttps://discord.com/oauth2/authorize?client_id=809452370550456386&scope=bot&permissions=24210502")
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
-		};
-		if (cmd == "ping") {
+			break;
+		case "ping":
 			var datenow = Date.now();
 			msg.channel.send('Loading!')
 				.then(msg => {
@@ -76,23 +78,16 @@ bot.on('message', msg => {
 					msg.channel.send(pingEmbed);
 					msg.delete();
 				});
-		};
-		if (cmd == "server" || cmd == "support") {
+				break;
+		case "server":
 			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
 			msg.author.send("The support server is https://discord.gg/adha4a9yhE")
-		};
-
-		if (cmd == "echo") {
-			if (msg.author.id == "287704540810182657") {
-				var arrayts = args.join(" ");
-				var msgts = arrayts.replace("echo ", "");
-				msg.channel.send(msgts);
-				msg.delete();
-			} else {
-				msg.delete();
-			}
-		};
-		if (cmd == "purge") {
+			break;
+		case "support":
+			msg.channel.send("Check your DMs, " + "<@" + msg.author.id + ">");
+			msg.author.send("The support server is https://discord.gg/adha4a9yhE")
+			break;
+		case "purge":
 			if (msg.guild === null) return;
 			if (!args[1] || args[1] > 100) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -122,8 +117,8 @@ bot.on('message', msg => {
 					}, 500);
 				};
 			};
-		};
-		if (cmd == "8ball") {
+			break;
+		case "8ball":
 			var text = args.slice(2).join(" ");
 			if (text.toLowerCase().includes("die") || text.toLowerCase().includes("suicide") || text.toLowerCase().includes("kill myself") || text.toLowerCase().includes("end it all")) {
 				msg.channel.send("I'm programmed not to say anything about that. Please don't hurt yourself. It's not worth it.")
@@ -174,8 +169,8 @@ bot.on('message', msg => {
 						break;
 				}
 			}
-		};
-		if (cmd == "kick") {
+			break;
+		case "kick":
 			if (msg.guild === null) return;
 			if (!msg.member.permissions.toArray().includes("KICK_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -224,8 +219,8 @@ bot.on('message', msg => {
 					};
 				};
 			};
-		};
-		if (cmd == "ban") {
+			break;
+		case "ban":
 			if (msg.guild === null) return;
 			if (!msg.member.permissions.toArray().includes("BAN_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
@@ -276,8 +271,8 @@ bot.on('message', msg => {
 					};
 				};
 			};
-		};
-		if (cmd == "mute") {
+			break;
+		case "mute":
 			if (msg.guild === null) return;
 			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
 			if (!role) {
@@ -318,8 +313,8 @@ bot.on('message', msg => {
 						});
 				};
 			};
-		};
-		if (cmd == "unmute") {
+			break;
+		case "unmute":
 			if (msg.guild === null) return;
 			var role = msg.guild.roles.cache.find(role => role.name === 'Muted')
 			if (!role) {
@@ -360,8 +355,8 @@ bot.on('message', msg => {
 						});
 				};
 			};
-		};
-		if (cmd == "translatetq") {
+			break;
+		case "translatetq":
 			if (!args[1]) {
 				var errorEmbed = new Discord.MessageEmbed()
 					.setTitle("Insufficient Parameters!")
@@ -373,12 +368,12 @@ bot.on('message', msg => {
 				msg.channel.startTyping();
 				var arrayts = args.join(" ");
 				var msgtsn = arrayts.replace("translatetq ", "");
-				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "a").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s")
+				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "s").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s")
 				msg.channel.stopTyping(true);
 				msg.channel.send('Translated version: ' + msgts + "\nTranslation may not be correct with intentional numbers.");
 			};
-		}
-		if (cmd == "staff") {
+			break;
+		case "staff":
 			var responseEmbed = new Discord.MessageEmbed()
 				.setTitle("Bot Staff")
 				.addField("Owner / Main Developer", "juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
@@ -386,8 +381,26 @@ bot.on('message', msg => {
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send(responseEmbed);
-		};
-		if (cmd == "eval") {
+			break;
+		case "uptime":
+				var uptime = Math.floor(bot.uptime / 60000)
+				if (uptime > 60) {
+					uptime = Math.floor(uptime / 60) + " hours"
+				} else {
+					uptime = Math.floor(uptime) + " minutes"
+				};
+				msg.channel.send('Current bot uptime is ' + uptime)
+				break;
+		//OWNER ONLY COMMANDS
+		case "echo":
+			if (msg.author.id == "287704540810182657") {
+				msg.channel.send(args.join(" ").replace("echo ", ""))
+				msg.delete();
+			} else {
+				msg.delete();
+			}
+			break;
+		case "eval":
 			if (msg.author.id == "287704540810182657") {
 				try {
 					const code = args.join(" ");
@@ -406,14 +419,17 @@ bot.on('message', msg => {
 			} else {
 				msg.channel.send('nice try idiot')
 			}
-		};
-		if (cmd == "shutdown") {
+			break;
+		case "shutdown":
 			if (msg.author.id == "287704540810182657") {
 				msg.channel.send('Shutting down...');
+				setTimeout(function() {
+					bot.destroy();
+				},3000);
 				bot.destroy();
 			};
-		};
-		if (cmd == "setstatus") {
+			break;
+		case "setstatus":
 			if (msg.author.id == "287704540810182657") {
 				if (args[1] == "default") {
 					status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
@@ -426,22 +442,15 @@ bot.on('message', msg => {
 			} else {
 				msg.channel.send('nice try idiot')
 			};
-		};
-		if (cmd == "uptime") {
-			var uptime = Math.floor(bot.uptime / 60000)
-			if (uptime > 60) {
-				uptime = Math.floor(uptime / 60) + " hours"
-			} else {
-				uptime = Math.floor(uptime) + " minutes"
+			break;
+		case "listservers":
+			if (msg.author.id == "287704540810182657") {
+				var string = ""
+				bot.guilds.cache.forEach(server => {
+					string = string + server.name + "\n"
+				});
+				msg.author.send(string)
 			};
-			msg.channel.send('Current bot uptime is ' + uptime)
-		};
-		if (cmd == "listservers" && msg.author.id == "287704540810182657") {
-			var string = ""
-			bot.guilds.cache.forEach(server => {
-				string = string + server.name + "\n"
-			});
-			msg.author.send(string)
 		};
 	};
 });
