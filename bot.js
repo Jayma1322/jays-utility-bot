@@ -222,7 +222,7 @@ bot.on('message', msg => {
 			break;
 		case "ban":
 			if (msg.guild === null) return;
-			if (!msg.member.permissions.toArray().includes("BAN_MEMBERS")) {
+			if (!msg.member.hasPermission("BAN_MEMBERS")) {
 				var errorEmbed = new Discord.MessageEmbed()
 					.setTitle("Insufficient Permissions!")
 					.addField(msg.author.tag, "You must have BAN_MEMBERS to use this command!")
@@ -231,12 +231,9 @@ bot.on('message', msg => {
 				msg.channel.send(errorEmbed);
 			} else {
 				if (!args[2]) {
-					var errorEmbed = new Discord.MessageEmbed()
-						.setTitle("Insufficient Parameters!")
-						.addField(msg.author.tag, "You must tag 1 user, and add a reason! (reason can be however long)")
-						.setColor("ff0000")
-						.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
-					msg.channel.send(errorEmbed);
+					// jay put your smelly embed code here
+					user/*? is this defined?*/.ban({ reason: 'no reason defined' });
+					message.channel.send('banned');
 				} else {
 					var user = msg.mentions.members.first()
 					if (!user || user.bannable == false) {
