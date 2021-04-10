@@ -374,6 +374,7 @@ bot.on('message', msg => {
 			var responseEmbed = new Discord.MessageEmbed()
 				.setTitle("Bot Staff")
 				.addField("Owner / Main Developer", "juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
+				.addField("GitHub Contributors", "roux#0493")
 				.addField("TranslationTQ Contributors", "ellie#0212\nbig_manc#6597")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
