@@ -368,7 +368,7 @@ bot.on('message', msg => {
 				msg.channel.startTyping();
 				var arrayts = args.join(" ");
 				var msgtsn = arrayts.replace("translatetq ", "");
-				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "s").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s")
+				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "s").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s").replace(/^/g, "'")
 				msg.channel.stopTyping(true);
 				msg.channel.send('Translated version: ' + msgts + "\nTranslation may not be correct with intentional numbers.");
 			};
