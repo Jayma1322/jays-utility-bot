@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const tqdecoder = require('tqdecoder')
 const bot = new Discord.Client();
 
 var status = "bot.user.setActivity('for ;help in ' + bot.guilds.cache.size + ' servers!', {\ntype: 'WATCHING'\n});"
@@ -368,7 +369,7 @@ bot.on('message', msg => {
 				msg.channel.startTyping();
 				var arrayts = args.join(" ");
 				var msgtsn = arrayts.replace("translatetq ", "");
-				var msgts = msgtsn.replace(/0/g, "o").replace(/1/g, "i").replace(/2/g, "s").replace(/3/g, "e").replace(/4/g, "a").replace(/5/g, "s").replace(/6/g, "g").replace(/7/g, "l").replace(/8/g, "B").replace(/9/g, "g").replace(/\$/g, "s").replace(/\^/g, "'").replace(/\/\\\/\\/g, "m").replace(/\/\\\//g, "n")
+				var msgts = tqdecoder.decodeTQ(msgtsn)
 				msg.channel.stopTyping(true);
 				msg.channel.send('Translated version: ' + msgts + "\nTranslation may not be correct with intentional numbers.");
 			};
@@ -378,7 +379,6 @@ bot.on('message', msg => {
 				.setTitle("Bot Staff")
 				.addField("Owner / Main Developer", "juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 				.addField("GitHub Contributors", "roux#0493")
-				.addField("TranslationTQ Contributors", "ellie#0212\nbig_manc#6597")
 				.setColor("00ff00")
 				.setFooter("Made with ❤ by juisdhiweuhrgiowuerhgiwUHIUOHWEO#0428")
 			msg.channel.send(responseEmbed);
